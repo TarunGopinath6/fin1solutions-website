@@ -5,13 +5,8 @@ import {
   Box,
   Button,
   Card,
-  //   CardActions,
-  //   CardActionArea,
   CardContent,
-  CardMedia,
   Divider,
-  useTheme,
-  useMediaQuery,
 } from "@mui/material";
 import Grid2 from "@mui/material/Grid2";
 import { motion } from "framer-motion";
@@ -34,6 +29,15 @@ import GoogleIcon from "@mui/icons-material/Google";
 import GroupsIcon from "@mui/icons-material/Groups";
 import SensorOccupiedIcon from "@mui/icons-material/SensorOccupied";
 import DescriptionIcon from "@mui/icons-material/Description";
+
+import logo_hdfcbank from "./assets/images/logo_hdfcbank.png";
+import logo_yesbank from "./assets/images/logo_yesbank.png";
+import logo_hdfcergo from "./assets/images/logo_hdfcergo.png";
+import logo_cholams from "./assets/images/logo_cholams.png";
+import logo_futuregenerali from "./assets/images/logo_futuregenerali.jpg";
+import logo_royalsundaram from "./assets/images/logo_royalsundaram.png";
+import logo_starhealth from "./assets/images/logo_starhealth.png";
+import logo_iffcotokio from "./assets/images/logo_iffcotokio.png";
 
 const general_insurance_categories = [
   {
@@ -121,7 +125,6 @@ const stats = [
     icon: (
       <GroupsIcon
         sx={{
-          marginRight: 1,
           color: "#e54c38",
           fontSize: 35,
           marginRight: 4,
@@ -135,7 +138,6 @@ const stats = [
     icon: (
       <SensorOccupiedIcon
         sx={{
-          marginRight: 1,
           color: "#e54c38",
           fontSize: 35,
           marginRight: 4,
@@ -149,7 +151,6 @@ const stats = [
     icon: (
       <DescriptionIcon
         sx={{
-          marginRight: 1,
           color: "#e54c38",
           fontSize: 35,
           marginRight: 1,
@@ -163,7 +164,6 @@ const stats = [
     icon: (
       <GoogleIcon
         sx={{
-          marginRight: 1,
           color: "#e54c38",
           fontSize: 35,
           marginRight: 4,
@@ -244,51 +244,38 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  // WHY SECTION STUFF
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
-
-  const getCardWidth = () => {
-    if (isMobile) return "100%";
-    if (isTablet) return "45%";
-    return "23%";
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
-
-  const cardVariants = {
+  const logoVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-      },
-    },
-    hover: {
-      y: -10,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-      },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="xl" sx={{ overflowX: "hidden" }}>
       {/* Header Text */}
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          textAlign: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Button
+          variant="outlined"
+          // onClick={() => handleCloseNavMenu(page)}
+          sx={{
+            my: 2,
+            mb: 0,
+            mx: 2,
+            color: "#0056b3",
+            display: { xs: "block", sm: "none", md: "none" },
+            borderColor: "#0056b3",
+          }}
+        >
+          Call: +91 98410 61758
+        </Button>
+      </Box>
+
       <Box
         sx={{
           display: { xs: "none", md: "flex" },
@@ -346,7 +333,7 @@ export default function Home() {
             Motor Insurance
           </Typography>
 
-          {/* Category Grid with Equal Ratio */}
+          {/* Category Grid2 with Equal Ratio */}
           <Grid2
             container
             sx={{
@@ -375,7 +362,7 @@ export default function Home() {
                       transform: "translate(0,-15%)",
                       backgroundColor: "#fff",
                     },
-                    width: "100%", // Ensure button takes full grid width
+                    width: "100%", // Ensure button takes full Grid2 width
                   }}
                   onClick={() => alert(`Clicked on ${category.name}`)}
                 >
@@ -422,7 +409,7 @@ export default function Home() {
             Vehicle Loans
           </Typography>
 
-          {/* Category Grid with Equal Ratio */}
+          {/* Category Grid2 with Equal Ratio */}
           <Grid2
             container
             sx={{
@@ -453,7 +440,7 @@ export default function Home() {
                       //   transition: "0.5s ease-in-out",
                       backgroundColor: "#fff",
                     },
-                    width: "100%", // Ensure button takes full grid width
+                    width: "100%", // Ensure button takes full Grid2 width
                   }}
                   onClick={() => alert(`Clicked on ${category.name}`)}
                 >
@@ -509,7 +496,7 @@ export default function Home() {
             Health Insurance
           </Typography>
 
-          {/* Category Grid with Equal Ratio */}
+          {/* Category Grid2 with Equal Ratio */}
           <Grid2
             container
             sx={{
@@ -543,7 +530,7 @@ export default function Home() {
                       //   transition: "0.5s ease-in-out",
                       backgroundColor: "#fff",
                     },
-                    width: "100%", // Ensure button takes full grid width
+                    width: "100%", // Ensure button takes full Grid2 width
                   }}
                   onClick={() => alert(`Clicked on ${category.name}`)}
                 >
@@ -579,7 +566,7 @@ export default function Home() {
               item
               xs={12}
               sm={6}
-              md={2} // Adjust for equal spacing in a 12-column grid
+              md={2} // Adjust for equal spacing in a 12-column Grid2
               key={index}
               sx={{ textAlign: "center" }}
             >
@@ -631,7 +618,7 @@ export default function Home() {
               item
               xs={12}
               sm={6}
-              md={2} // Adjust for equal spacing in a 12-column grid
+              md={2} // Adjust for equal spacing in a 12-column Grid2
               key={index}
               sx={{
                 textAlign: "center",
@@ -700,7 +687,159 @@ export default function Home() {
           ))}
         </Grid2>
       </Box>
+
       <Box
+        sx={{
+          backgroundColor: "#f9f9f9",
+          width: "100%",
+          paddingY: 5,
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        {/* Channel Partner Section */}
+        <Box sx={{ width: "100%", textAlign: "center", marginBottom: "75px" }}>
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Typography
+              variant="h3"
+              sx={{
+                mb: 2,
+                fontSize: 30,
+                color: "gray",
+                fontWeight: "500",
+              }}
+            >
+              Channel Partners
+            </Typography>
+            <Divider
+              sx={{
+                width: "100px",
+                margin: "0 auto",
+                backgroundColor: "gray",
+                height: "1px",
+              }}
+            />
+          </motion.div>
+
+          <Grid2 container spacing={3} justifyContent="center" sx={{ mt: 4 }}>
+            {[logo_hdfcbank, logo_yesbank].map((logo, index) => (
+              <Grid2 item xs={6} sm={4} md={3} key={index}>
+                <motion.div
+                  variants={logoVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                >
+                  <Box
+                    sx={{
+                      width: "100%",
+                      height: "70px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      backgroundColor: "white",
+                      boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
+                      borderRadius: 2,
+                      overflow: "hidden",
+                      transition: "transform 0.3s ease",
+                      "&:hover": { transform: "scale(1.05)" },
+                    }}
+                  >
+                    <img
+                      src={logo}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain",
+                      }}
+                    />
+                  </Box>
+                </motion.div>
+              </Grid2>
+            ))}
+          </Grid2>
+        </Box>
+
+        {/* Insurance Partner Section */}
+        <Box sx={{ width: "100%", textAlign: "center", marginBottom: "50px" }}>
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Typography
+              variant="h3"
+              sx={{
+                mb: 2,
+                color: "gray",
+                fontSize: 30,
+                fontWeight: "500",
+              }}
+            >
+              Insurance Partners
+            </Typography>
+            <Divider
+              sx={{
+                width: "100px",
+                margin: "0 auto",
+                backgroundColor: "gray",
+                height: "1px",
+              }}
+            />
+          </motion.div>
+
+          <Grid2 container spacing={3} justifyContent="center" sx={{ mt: 4 }}>
+            {[
+              logo_futuregenerali,
+              logo_iffcotokio,
+              logo_starhealth,
+              logo_hdfcergo,
+              logo_royalsundaram,
+              logo_cholams,
+            ].map((logo, index) => (
+              <Grid2 item xs={6} sm={4} md={2} key={index}>
+                <motion.div
+                  variants={logoVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                >
+                  <Box
+                    sx={{
+                      width: "100%",
+                      height: "70px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      backgroundColor: "white",
+                      boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
+                      borderRadius: 2,
+                      overflow: "hidden",
+                      transition: "transform 0.3s ease",
+                      "&:hover": { transform: "scale(1.05)" },
+                    }}
+                  >
+                    <img
+                      src={logo}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain",
+                      }}
+                    />
+                  </Box>
+                </motion.div>
+              </Grid2>
+            ))}
+          </Grid2>
+        </Box>
+      </Box>
+
+      {/* <Box
         sx={{
           minHeight: "100vh",
           backgroundColor: "white",
@@ -709,23 +848,21 @@ export default function Home() {
           overflow: "hidden",
         }}
       >
-        {/* Top Left Title */}
         <Box
           sx={{
             display: "flex",
             position: "absolute",
             top: 40,
             left: 40,
-            color: "BLUE",
+            color: "blue",
           }}
         >
           <Typography variant="h2" sx={{ color: "#4559b4", marginRight: 2 }}>
             Why
           </Typography>
         </Box>
-
-        {/* Cards Section */}
         <Box
+          container
           sx={{
             display: "flex",
             flexWrap: "wrap",
@@ -760,7 +897,6 @@ export default function Home() {
                   },
                 }}
               >
-                {/* Image on top */}
                 <CardMedia
                   component="img"
                   height="150"
@@ -780,135 +916,7 @@ export default function Home() {
             </motion.div>
           ))}
         </Box>
-      </Box>
-      <Box
-        sx={{
-          minHeight: "100vh",
-          background: "linear-gradient(to bottom right, #fafafa, #f5f5f5)",
-          padding: { xs: "20px", sm: "40px", md: "60px" },
-          position: "relative",
-        }}
-      >
-        {/* Section Title */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <Typography
-            variant="h2"
-            sx={{
-              color: theme.palette.primary.main,
-              fontWeight: 700,
-              fontSize: { xs: "2.5rem", md: "3.5rem" },
-              marginBottom: 6,
-              position: "relative",
-              "&:after": {
-                content: '""',
-                position: "absolute",
-                bottom: -16,
-                left: 0,
-                width: 60,
-                height: 4,
-                backgroundColor: theme.palette.primary.main,
-                borderRadius: 2,
-              },
-            }}
-          >
-            Why Choose Us
-          </Typography>
-        </motion.div>
-
-        {/* Cards Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: {
-                xs: "1fr",
-                sm: "repeat(2, 1fr)",
-                md: "repeat(4, 1fr)",
-              },
-              gap: 3,
-              mt: 4,
-            }}
-          >
-            {cardsData.map((card, index) => (
-              <motion.div
-                key={index}
-                variants={cardVariants}
-                whileHover="hover"
-              >
-                <Card
-                  sx={{
-                    height: "100%",
-                    backgroundColor: "white",
-                    borderRadius: 3,
-                    overflow: "hidden",
-                    boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
-                    transition: "all 0.3s ease-in-out",
-                    "&:hover": {
-                      boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-                      "& .MuiCardContent-root": {
-                        background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
-                        color: "white",
-                      },
-                      "& .card-arrow": {
-                        transform: "translateX(4px)",
-                        opacity: 1,
-                      },
-                    },
-                  }}
-                >
-                  <CardContent
-                    sx={{
-                      height: "100%",
-                      p: 4,
-                      transition: "all 0.3s ease-in-out",
-                    }}
-                  >
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        fontWeight: 600,
-                        mb: 2,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      {card.title}
-                      {/* <ArrowForward
-                        className="card-arrow"
-                        sx={{
-                          fontSize: 20,
-                          opacity: 0,
-                          transition: "all 0.3s ease-in-out",
-                        }}
-                      /> */}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "inherit",
-                        lineHeight: 1.6,
-                        opacity: 0.9,
-                      }}
-                    >
-                      {card.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </Box>
-        </motion.div>
-      </Box>
+      </Box> */}
     </Container>
   );
 }
