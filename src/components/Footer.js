@@ -9,15 +9,18 @@ import {
   Container,
   Stack,
 } from "@mui/material";
-import { Phone, Email } from "@mui/icons-material";
+import { Phone, Email, Person } from "@mui/icons-material";
 import Logo from "../assets/images/logo_fin1solutions.png";
 
 const Footer = () => {
   const menuItems = [
     { label: "Home", href: "#" },
-    { label: "About Us", href: "#" },
-    { label: "Services", href: "#" },
-    { label: "Contact Us", href: "#" },
+    { label: "Motor Insurance", href: "/motor insurance" },
+    { label: "Health Insurance", href: "/health insurance" },
+    { label: "General Insurance", href: "/general insurance" },
+    { label: "Vehicle Loans", href: "/vehicle loans" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
     { label: "Privacy Policy", href: "#" },
   ];
 
@@ -95,10 +98,30 @@ const Footer = () => {
                 objectFit: "contain",
               }}
             />
-            <Typography variant="body2" sx={{ maxWidth: "sm" }}>
+            <Typography variant="body2" sx={{ maxWidth: "sm", mb: 2 }}>
               No. 264, Anbu Colony, Flat No. 4, Ground Floor, Anna Nagar,
               Chennai, Tamil Nadu - 600 050
             </Typography>
+            <Stack spacing={1} alignItems="flex-start">
+              <Typography
+                variant="body2"
+                sx={{ display: "flex", alignItems: "center", gap: 1 }}
+              >
+                <Person /> Proprietor - R Gopinath
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ display: "flex", alignItems: "center", gap: 1 }}
+              >
+                <Phone /> +91 98410 61758
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ display: "flex", alignItems: "center", gap: 1 }}
+              >
+                <Email /> gopi@fin1solutions.com
+              </Typography>
+            </Stack>
           </Grid>
 
           {/* Center Column: Contact Buttons */}
@@ -123,6 +146,7 @@ const Footer = () => {
                 backgroundColor: "#1E88E5",
                 "&:hover": { backgroundColor: "#1565C0" },
               }}
+              onClick={() => window.open("tel:+919841061758")}
             >
               Call Us: +91 98410 61758
             </Button>
@@ -135,6 +159,7 @@ const Footer = () => {
                 backgroundColor: "#1E88E5",
                 "&:hover": { backgroundColor: "#1565C0" },
               }}
+              onClick={() => window.open("mailto:gopi@fin1solutions.com")}
             >
               Email Us: gopi@fin1solutions.com
             </Button>
@@ -160,7 +185,7 @@ const Footer = () => {
               }}
             >
               <iframe
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Fin1Solutions&zoom=10&maptype=roadmap"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Fin1Solutions&zoom=13&maptype=roadmap"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -181,7 +206,7 @@ const Footer = () => {
             variant="body2"
             sx={{
               color: "grey.500",
-              fontSize: "12px",
+              fontSize: "10px",
               lineHeight: 1.6,
               textAlign: "justify",
               mb: 1,
@@ -189,15 +214,14 @@ const Footer = () => {
           >
             Fin1Solutions | Sole Proprietor - R Gopinath | Reg. Office - No.
             264, Anbu Colony, Flat No. 4, Groud Floor, Anna Nagar, Chennai,
-            Tamil Nadu - 600 050. | IRDAI Direct Agent (Health) : IRDA/XXXXX/XX
-            (General) : IRDA/XXXXX/XX && IRDA/XXXXX/XX | Standard T&C Apply* For
-            more details on risk factors, terms, and conditions, please read the
-            sales brochure carefully before concluding a sale. Visitors are
-            hereby informed that their information submitted on the website may
-            be shared with insurers. Product information is authentic and solely
-            based on the information received from the insurers.
+            Tamil Nadu - 600 050. | Standard T&C Apply* For more details on risk
+            factors, terms, and conditions, please read the sales brochure
+            carefully before concluding a sale. Visitors are hereby informed
+            that their information submitted on the website may be shared with
+            insurers. Product information is authentic and solely based on the
+            information received from the insurers.
           </Typography>
-          <Typography
+          {/* <Typography
             variant="body2"
             sx={{
               color: "grey.500",
@@ -206,7 +230,7 @@ const Footer = () => {
             }}
           >
             © 2024-2028 Fin1Solutions All Rights Reserved
-          </Typography>
+          </Typography> */}
         </Box>
       </Container>
     </Box>

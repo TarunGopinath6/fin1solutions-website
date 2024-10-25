@@ -6,10 +6,12 @@ import {
   Button,
   Card,
   CardContent,
+  CardMedia,
   Divider,
+  IconButton,
 } from "@mui/material";
 import Grid2 from "@mui/material/Grid2";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 import DirectionsCarFilledOutlinedIcon from "@mui/icons-material/DirectionsCarFilledOutlined";
 import TwoWheelerOutlinedIcon from "@mui/icons-material/TwoWheelerOutlined";
@@ -29,6 +31,8 @@ import GoogleIcon from "@mui/icons-material/Google";
 import GroupsIcon from "@mui/icons-material/Groups";
 import SensorOccupiedIcon from "@mui/icons-material/SensorOccupied";
 import DescriptionIcon from "@mui/icons-material/Description";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import logo_hdfcbank from "./assets/images/logo_hdfcbank.png";
 import logo_yesbank from "./assets/images/logo_yesbank.png";
@@ -38,6 +42,14 @@ import logo_futuregenerali from "./assets/images/logo_futuregenerali.jpg";
 import logo_royalsundaram from "./assets/images/logo_royalsundaram.png";
 import logo_starhealth from "./assets/images/logo_starhealth.png";
 import logo_iffcotokio from "./assets/images/logo_iffcotokio.png";
+import logo_fin1solutions from "./assets/images/logo_fin1solutions.png";
+import insurance_handshake from "./assets/images/insurance_handshake.jpg";
+import clock from "./assets/images/24bar7.png";
+import personalized from "./assets/images/personalized.png";
+import bestPrice from "./assets/images/best-price.png";
+import experience from "./assets/images/experience.png";
+import multipleOptions from "./assets/images/multiple-options.png";
+import relaxed from "./assets/images/relaxed.png";
 
 const general_insurance_categories = [
   {
@@ -121,7 +133,7 @@ const health_insurance_categories = [
 const stats = [
   {
     label: "Our Employees",
-    value: 16,
+    value: 25,
     icon: (
       <GroupsIcon
         sx={{
@@ -134,7 +146,7 @@ const stats = [
   },
   {
     label: "Our Customers",
-    value: 700,
+    value: 2500,
     icon: (
       <SensorOccupiedIcon
         sx={{
@@ -147,13 +159,26 @@ const stats = [
   },
   {
     label: "Policies Disbursed",
-    value: 5000,
+    value: 40000,
     icon: (
       <DescriptionIcon
         sx={{
           color: "#e54c38",
           fontSize: 35,
-          marginRight: 1,
+          marginRight: 4,
+        }}
+      />
+    ),
+  },
+  {
+    label: "Loan Amount Disbursed",
+    value: "700",
+    icon: (
+      <CurrencyRupeeOutlinedIcon
+        sx={{
+          color: "#e54c38",
+          fontSize: 35,
+          marginRight: 4,
         }}
       />
     ),
@@ -175,53 +200,125 @@ const stats = [
 
 const cardsData = [
   {
-    image: "https://via.placeholder.com/150",
-    title: "Card 1",
-    description: "This is the first card.",
+    image: clock,
+    title: "24/7 Claim Support",
+    description:
+      "Our executives are avialable round the clock to service your needs, to the best of their abilities.",
   },
   {
-    image: "https://via.placeholder.com/150",
-    title: "Card 2",
-    description: "This is the second card.",
+    image: personalized,
+    title: "Personalized Policy",
+    description:
+      "Everyone's needs are different & our experienced executives get you the best solutions that fit your wallet.",
   },
   {
-    image: "https://via.placeholder.com/150",
-    title: "Card 3",
-    description: "This is the third card.",
+    image: bestPrice,
+    title: "Transparent Pricing",
+    description:
+      "No hidden charges or overcharging. We ensure you get the best price and know what you're paying for.",
   },
   {
-    image: "https://via.placeholder.com/150",
-    title: "Card 4",
-    description: "This is the fourth card.",
+    image: experience,
+    title: "28 Years in Business",
+    description:
+      "Reliability and Customer Satisfaction are the pillars we've built our organization on for almost 3 decades.",
   },
-  // Add more cards here...
+  {
+    image: multipleOptions,
+    title: "Extensive Options",
+    description:
+      "We represent all the market leaders in Insurance and compare quotes & features, to give you the best policy.",
+  },
+  {
+    image: relaxed,
+    title: "Sit back and relax",
+    description:
+      "We take utmost care of your every need from quote, to discounts, claims, renewals and service.",
+  },
+];
+
+const reviews = [
+  {
+    text: "This is my 4th vehicle purchase in the last 2 years with FIN 1 Solutions. I am very happy and satisfied the way they negotiate with dealer for better offers and also attractive interest rate from Bank for vehicle loan. Best product and price for all my vehicle and health insurance,  not to mention customer service at the time of claim. Kudos to Mr.Gopinath. Wishing the entire team all the best.",
+    author: "M. Sam Edmond",
+    designation: "Managing Director - Antans Constructions Pvt. Ltd.",
+  },
+  {
+    text: "First experience is the best experience with FIN 1 Solutions. Whole process of buying the pre owned vehicle were Professionally handled by the team. I felt like buying a new car, because the way your team delivered the vehicle. The purchase was done in a transparent manner right from vehicle test drive, service history check and price. I will strongly recommend my friends and relatives to your company for vehicle purchase. Thank you for the wonderful experience. Best wishes to all.",
+    author: "S. Ramesh",
+    designation: "Civil Contractor",
+  },
+  {
+    text: "Once again, FIN 1 Solutions has done a great job and I’m totally happy and satisfied by the purchase of my new Innova Crysta. Thank you for offering the best deal from dealer, low interest rate and best insurance premium. Happy to associate with you for more than 2 decades. Wish you all the best!",
+    author: "C.R. Suresh Babu",
+    designation: "Managing Partner - Precision Profiles India",
+  },
+  {
+    text: "This is my 3rd pre-owned car purchase in the last 8 years from FIN 1 Solutions. I am extremely happy because Transparency in the price and quality of the car delivered. Direct negotiation with seller made my purchase even more pleasure. Not to mention seamless and swift process and after sales service. Thank you and wish you all the best.",
+    author: "S. Balachandran",
+    designation: "Proprietor - BluRay Interior Design",
+  },
+  {
+    text: "I have been a customer of Mr.Gopinath since 2003. Since then all my car purchase financing , car insurance and personal medical insurance has been through his company. He has always got us the best interest rates and dealer discounts and his service is always reliable. He is definitely an expert in this field and is very professional with his approach. wish him and his team the very best.",
+    author: "K. Saravana Prakash",
+    designation: "Managing Director - Kalyan Grand Hotel, Vandalur",
+  },
 ];
 
 export default function Home() {
+  // useEffect(() => {
+  //   const duration = 2000; // Total animation time in milliseconds
+  //   const increments = stats.map((stat) => stat.value / (duration / 50)); // Number of increments needed for each value
+
+  //   const intervalId = setInterval(() => {
+  //     setCounters((prevCounters) =>
+  //       prevCounters.map((counter, index) => {
+  //         if (index === 0 || index === 4) {
+  //           // Skip increment for "Years of Experience" and "Google Rating"
+  //           return stats[index].value;
+  //         }
+  //         if (counter < stats[index].value) {
+  //           // Ensure no value exceeds its target
+  //           return Math.floor(counter + increments[index], stats[index].value);
+  //         }
+  //         return counter;
+  //       })
+  //     );
+  //   }, 50);
+
+  //   return () => clearInterval(intervalId);
+  // }, []);
+
+  //   COUNTER STUFF
+
   useEffect(() => {
     const duration = 2000; // Total animation time in milliseconds
-    const increments = stats.map((stat) => stat.value / (duration / 50)); // Number of increments needed for each value
+    const interval = 50; // Update interval in milliseconds
+    const totalSteps = duration / interval; // Total steps for each increment
 
     const intervalId = setInterval(() => {
       setCounters((prevCounters) =>
         prevCounters.map((counter, index) => {
-          if (index === 0 || index === 3) {
+          if (index === 0 || index === 4) {
             // Skip increment for "Years of Experience" and "Google Rating"
             return stats[index].value;
           }
-          if (counter < stats[index].value) {
-            // Ensure no value exceeds its target
-            return Math.floor(counter + increments[index], stats[index].value);
+
+          const targetValue = stats[index].value;
+          const increment = Math.ceil(targetValue / totalSteps);
+
+          if (counter < targetValue) {
+            // Ensure the counter reaches but does not exceed the target
+            return Math.min(counter + increment, targetValue);
           }
           return counter;
         })
       );
-    }, 50);
+    }, interval);
 
     return () => clearInterval(intervalId);
   }, []);
 
-  //   COUNTER STUFF
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
   const [counters, setCounters] = useState(stats.map((stat) => 0)); // Initialize counters to 0
@@ -249,6 +346,35 @@ export default function Home() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
+  // CUSTOMER REVIEWS STUFF
+  const [currentReview, setCurrentReview] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Automatically change review every 5 seconds
+  useEffect(() => {
+    if (!isPaused) {
+      const interval = setInterval(() => {
+        handleNext();
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [currentReview, isPaused]);
+
+  const handlePrev = () => {
+    setCurrentReview((prev) => (prev === 0 ? reviews.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentReview((prev) => (prev === reviews.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleMouseDown = () => setIsPaused(true);
+  const handleMouseUp = () => setIsPaused(false);
+
+  // QUOTE STUFF
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
+
   return (
     <Container maxWidth="xl" sx={{ overflowX: "hidden" }}>
       {/* Header Text */}
@@ -261,15 +387,15 @@ export default function Home() {
         }}
       >
         <Button
-          variant="outlined"
+          variant="contained"
           // onClick={() => handleCloseNavMenu(page)}
           sx={{
             my: 2,
             mb: 0,
             mx: 2,
-            color: "#0056b3",
+            backgroundColor: "#f03d1f",
+            color: "#fff",
             display: { xs: "block", sm: "none", md: "none" },
-            borderColor: "#0056b3",
           }}
         >
           Call: +91 98410 61758
@@ -297,6 +423,8 @@ export default function Home() {
           to protect your future
         </Typography>
       </Box>
+
+      {/* INSURNANCE OPTIONS */}
       <Box
         container
         sx={{
@@ -364,7 +492,7 @@ export default function Home() {
                     },
                     width: "100%", // Ensure button takes full Grid2 width
                   }}
-                  onClick={() => alert(`Clicked on ${category.name}`)}
+                  // onClick={() => alert(`Clicked on ${category.name}`)}
                 >
                   {category.icon}
                   <Typography
@@ -442,7 +570,7 @@ export default function Home() {
                     },
                     width: "100%", // Ensure button takes full Grid2 width
                   }}
-                  onClick={() => alert(`Clicked on ${category.name}`)}
+                  // onClick={() => alert(`Clicked on ${category.name}`)}
                 >
                   {category.icon}
                   <Typography
@@ -532,7 +660,7 @@ export default function Home() {
                     },
                     width: "100%", // Ensure button takes full Grid2 width
                   }}
-                  onClick={() => alert(`Clicked on ${category.name}`)}
+                  // onClick={() => alert(`Clicked on ${category.name}`)}
                 >
                   {category.icon}
                   <Typography
@@ -551,58 +679,8 @@ export default function Home() {
           </Grid2>
         </Box>
       </Box>
-      <Divider sx={{ marginTop: 5 }} />
-      {/* <Box
-        sx={{
-          paddingTop: 5,
-          paddingBottom: 5,
-          width: "100%",
-        }}
-        ref={sectionRef}
-      >
-        <Grid2 container spacing={4} justifyContent="space-evenly">
-          {stats.map((stat, index) => (
-            <Grid2
-              item
-              xs={12}
-              sm={6}
-              md={2} // Adjust for equal spacing in a 12-column Grid2
-              key={index}
-              sx={{ textAlign: "center" }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                {stats[index]["icon"]}
 
-                <Box sx={{ textAlign: "left" }}>
-                  <Typography
-                    variant="h4"
-                    fontWeight="bold"
-                    color="#e54c38"
-                    sx={{ fontSize: 38, mb: 1 }}
-                  >
-                    {index === 3
-                      ? stats[index].value // Static for "Years of Experience" and "Google Rating"
-                      : `${counters[index].toLocaleString()}+`}
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    color="textSecondary"
-                    sx={{ fontSize: 14, color: "gray" }}
-                  >
-                    {stat.label}
-                  </Typography>
-                </Box>
-              </Box>
-            </Grid2>
-          ))}
-        </Grid2>
-      </Box> */}
+      <Divider sx={{ marginTop: 5 }} />
       <Box
         sx={{
           paddingTop: 5,
@@ -622,6 +700,7 @@ export default function Home() {
               key={index}
               sx={{
                 textAlign: "center",
+                width: { xs: "70%", md: "25%" },
                 "&:hover": {
                   transform: "translateY(-8px)",
                   transition: "all 0.3s ease",
@@ -633,6 +712,7 @@ export default function Home() {
                 sx={{
                   padding: "20px",
                   borderRadius: "15px",
+                  width: "90%",
                   boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
                   backgroundColor: "#fff", // White background for a clean corporate feel
                   transition: "0.3s",
@@ -666,8 +746,10 @@ export default function Home() {
                         lineHeight: "1.2",
                       }}
                     >
-                      {index === 3
+                      {index === 4
                         ? stats[index].value
+                        : index === 3
+                        ? `${counters[index].toLocaleString()}Cr+`
                         : `${counters[index].toLocaleString()}+`}
                     </Typography>
 
@@ -687,7 +769,7 @@ export default function Home() {
           ))}
         </Grid2>
       </Box>
-
+      {/* CHANNEL AND INSURANCE PARTNERS */}
       <Box
         sx={{
           backgroundColor: "#f9f9f9",
@@ -795,11 +877,11 @@ export default function Home() {
 
           <Grid2 container spacing={3} justifyContent="center" sx={{ mt: 4 }}>
             {[
-              logo_futuregenerali,
-              logo_iffcotokio,
-              logo_starhealth,
+              // logo_futuregenerali,
+              // logo_iffcotokio,
               logo_hdfcergo,
               logo_royalsundaram,
+              logo_starhealth,
               logo_cholams,
             ].map((logo, index) => (
               <Grid2 item xs={6} sm={4} md={2} key={index}>
@@ -811,7 +893,8 @@ export default function Home() {
                   <Box
                     sx={{
                       width: "100%",
-                      height: "70px",
+                      minHeight: "90px",
+                      height: "90px",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
@@ -839,6 +922,7 @@ export default function Home() {
         </Box>
       </Box>
 
+      {/* WHY FIN1SOLUTIONS */}
       {/* <Box
         sx={{
           minHeight: "100vh",
@@ -917,6 +1001,297 @@ export default function Home() {
           ))}
         </Box>
       </Box> */}
+      <Box
+        sx={{
+          maxHeight: { md: "70vh" },
+          background: "white",
+          padding: "50px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: { xs: "column", md: "row" }, // Stack on small screens
+          overflow: "hidden",
+        }}
+      >
+        {/* Left Section: Text and Logo */}
+        <Box
+          sx={{
+            width: { xs: "100%", md: "40%" },
+            display: "flex",
+            alignItems: "center",
+            textAlign: "center",
+            paddingRight: { md: "20px" },
+            flexDirection: { xs: "row", md: "column" }, // Horizontal on mobile, vertical on desktop
+            justifyContent: { xs: "center", md: "flex-start" },
+          }}
+        >
+          <Typography
+            variant="h2"
+            sx={{
+              color: "#4559b4",
+              fontWeight: "500",
+              fontSize: { xs: 28, md: 40 },
+              marginRight: { xs: 1, md: 0 },
+            }}
+          >
+            Why
+          </Typography>
+          <img
+            src={logo_fin1solutions}
+            alt="Company Logo"
+            style={{
+              width: "50%",
+              marginLeft: { xs: "8px", md: "0" }, // Space between "Why" and logo
+            }}
+          />
+
+          {/* Hide image on xs/sm screens */}
+          <Box
+            component="img"
+            src={insurance_handshake}
+            alt="Family shaking hands with insurance agent"
+            sx={{
+              display: { xs: "none", md: "block" }, // Hide on small screens
+              width: "70%",
+              borderRadius: "10px",
+              marginTop: 3,
+            }}
+          />
+        </Box>
+
+        {/* Right Section: Card Grid */}
+        <Box
+          container
+          sx={{
+            width: { xs: "100%", md: "60%" },
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "1fr 1fr",
+              md: "1fr 1fr 1fr",
+            }, // Two cards per row on small screens
+            gap: 2,
+            alignItems: "center",
+            paddingLeft: { md: "20px" },
+            marginTop: { xs: 3, md: 0 },
+          }}
+        >
+          {cardsData.map((card, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              style={{
+                width: "100%",
+                height: { xs: 250, sm: 280, md: 300 },
+                marginBottom: 2,
+              }}
+            >
+              <Card
+                sx={{
+                  height: "250px",
+                  boxShadow: "0px 4px 15px rgba(0,0,0,0.2)",
+                  borderRadius: 2,
+                  p: 2,
+                  overflow: "hidden",
+                  backgroundColor: "white",
+                  color: "black",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  textAlign: "center",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  "&:hover": {
+                    transform: "scale(1.03)",
+                    boxShadow: "0px 6px 20px rgba(0,0,0,0.25)",
+                    backgroundColor: "#1E88E5",
+                    color: "white",
+                  },
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  height="50px"
+                  image={card.image}
+                  alt={card.title}
+                  sx={{
+                    objectFit: "contain",
+                    borderRadius: "5px 5px 0 0",
+                    marginBottom: "5px",
+                  }}
+                />
+                <CardContent>
+                  <Typography
+                    variant="h6"
+                    sx={{ fontWeight: "bold", mb: 3, fontSize: "18px" }}
+                  >
+                    {card.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ fontSize: "14px" }}>
+                    {card.description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </Box>
+      </Box>
+
+      {/* CUSTOMER REVIEWS */}
+      <Box
+        sx={{
+          width: { xs: "80%", md: "70%" },
+          mx: "auto",
+          px: { xs: 5, md: 15 },
+          textAlign: "center",
+          position: "relative",
+          overflow: "hidden",
+          color: "text.secondary",
+          height: { xs: "60vh", sm: "50vh", md: "50vh" }, // Consistent height for all content
+        }}
+      >
+        {/* Review Content */}
+        <Box
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          sx={{
+            cursor: "pointer",
+            position: "relative",
+            height: "100%", // Full height for consistent spacing
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
+          <Typography
+            variant="body1"
+            sx={{
+              fontSize: { xs: 12, sm: 18 },
+              mb: 1,
+              textAlign: "justify",
+              maxHeight: "50%", // Set a fixed height for the review text area
+              overflow: "hidden",
+            }}
+          >
+            "{reviews[currentReview].text}"
+          </Typography>
+          <Box
+            sx={{
+              mt: 5,
+              position: "absolute",
+              bottom: "15%",
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
+            <Typography
+              variant="body2"
+              sx={{
+                fontSize: { xs: 12, sm: 16 },
+                color: "text.secondary",
+                fontWeight: "bold",
+              }}
+            >
+              - {reviews[currentReview].author}
+            </Typography>
+            <Typography
+              variant="body2"
+              sx={{
+                fontSize: { xs: 12, sm: 16 },
+                color: "text.secondary",
+                fontWeight: "bold",
+              }}
+            >
+              {reviews[currentReview].designation}
+            </Typography>
+          </Box>
+        </Box>
+
+        {/* Navigation Arrows */}
+        <IconButton
+          onClick={handlePrev}
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: 0,
+            transform: "translateY(-50%)",
+            color: "text.secondary",
+            "&:hover": { color: "text.primary" },
+          }}
+        >
+          <ArrowBackIosIcon />
+        </IconButton>
+        <IconButton
+          onClick={handleNext}
+          sx={{
+            position: "absolute",
+            top: "50%",
+            right: 0,
+            transform: "translateY(-50%)",
+            color: "text.secondary",
+            "&:hover": { color: "text.primary" },
+          }}
+        >
+          <ArrowForwardIosIcon />
+        </IconButton>
+      </Box>
+
+      {/* STEVE JOBS QUOTE */}
+      <Box
+        ref={ref} // Attach ref to the component
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "30vh",
+          width: "100%",
+          padding: { xs: "5px", sm: "40px" },
+          backgroundColor: "transparent",
+        }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}} // Only animate if in view
+          transition={{ duration: 1 }}
+          style={{ width: "100%", textAlign: "center" }}
+        >
+          <Typography
+            variant="h4"
+            component="h2"
+            sx={{
+              fontSize: { xs: "1rem", sm: "2rem", md: "2.5rem" },
+              fontWeight: 300,
+              lineHeight: 1.5,
+              letterSpacing: "0.05em",
+              color: "text.primary",
+              width: { xs: "100%", md: "70%" },
+              mx: "auto",
+              background: "linear-gradient(90deg, #1E88E5, #8E24AA)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            <motion.div>Get closer than ever to your customer.</motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}} // Trigger when in view
+              transition={{ duration: 2, delay: 1 }}
+              style={{
+                background: "linear-gradient(90deg, #1E88E5, #43A047)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                fontWeight: 500,
+              }}
+            >
+              So close that you tell them what they need,
+            </motion.div>
+            <motion.div>well before they realize it themselves.</motion.div>
+            <motion.div>- Steve Jobs</motion.div>
+          </Typography>
+        </motion.div>
+      </Box>
     </Container>
   );
 }

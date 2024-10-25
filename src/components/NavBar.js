@@ -18,6 +18,7 @@ const pages = [
   "Home",
   "Motor Insurance",
   "Health Insurance",
+  "General Insurance",
   "Vehicle Loans",
   "About",
   "Contact",
@@ -93,15 +94,16 @@ export default function ResponsiveAppBar() {
                 </Button>
               ))}
               <Button
-                variant="outlined"
-                // onClick={() => handleCloseNavMenu(page)}
+                variant="contained"
                 sx={{
                   my: 2,
                   mx: 2,
-                  color: "#0056b3",
+                  color: "#fff",
                   display: "block",
-                  borderColor: "#0056b3",
+                  borderColor: "#f03d1f",
+                  backgroundColor: "#f03d1f",
                 }}
+                onClick={() => window.open("tel:+919841061758")}
               >
                 Call: +91 98410 61758
               </Button>

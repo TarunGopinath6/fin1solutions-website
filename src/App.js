@@ -5,10 +5,12 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 
 import Home from "./Home";
-import Insurance from "./Home";
-import Loans from "./Home";
+import MotorInsurance from "./MotorInsurance";
+import HealthInsurance from "./HealthInsurance";
+import GeneralInsurance from "./GeneralInsurance";
+import VehicleLoans from "./VehicleLoans";
+import Contact from "./Contact";
 import About from "./Home";
-import Contact from "./Home";
 
 function App() {
   return (
@@ -16,8 +18,10 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/insurance" element={<Insurance />} />
-        <Route path="/loans" element={<Loans />} />
+        <Route path="/motor insurance" element={<MotorInsurance />} />
+        <Route path="/health insurance" element={<HealthInsurance />} />
+        <Route path="/general insurance" element={<GeneralInsurance  />} />
+        <Route path="/vehicle loans" element={<VehicleLoans />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
