@@ -37,7 +37,7 @@ const Footer = () => {
     >
       <Container maxWidth="lg">
         {/* Quick Links with vertical dividers */}
-        {/* <Stack
+        <Stack
           direction="row"
           spacing={1}
           justifyContent="center"
@@ -71,7 +71,7 @@ const Footer = () => {
               )}
             </React.Fragment>
           ))}
-        </Stack> */}
+        </Stack>
 
         {/* Three Column Layout */}
         <Grid container spacing={4}>
