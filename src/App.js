@@ -20,7 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/motor insurance" element={<MotorInsurance />} />
         <Route path="/health insurance" element={<HealthInsurance />} />
-        <Route path="/general insurance" element={<GeneralInsurance  />} />
+        <Route path="/general insurance" element={<GeneralInsurance />} />
         <Route path="/vehicle loans" element={<VehicleLoans />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
