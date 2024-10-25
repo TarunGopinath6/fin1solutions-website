@@ -397,6 +397,7 @@ export default function Home() {
             color: "#fff",
             display: { xs: "block", sm: "none", md: "none" },
           }}
+          onClick={() => window.open("tel:+919841061758")}
         >
           Call: +91 98410 61758
         </Button>

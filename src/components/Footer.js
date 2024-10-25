@@ -15,10 +15,10 @@ import Logo from "../assets/images/logo_fin1solutions.png";
 const Footer = () => {
   const menuItems = [
     { label: "Home", href: "#" },
-    { label: "Motor Insurance", href: "/motor insurance" },
-    { label: "Health Insurance", href: "/health insurance" },
-    { label: "General Insurance", href: "/general insurance" },
-    { label: "Vehicle Loans", href: "/vehicle loans" },
+    { label: "Motor Insurance", href: "/motorinsurance" },
+    { label: "Health Insurance", href: "/healthinsurance" },
+    { label: "General Insurance", href: "/generalinsurance" },
+    { label: "Vehicle Loans", href: "/vehicleloans" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
     { label: "Privacy Policy", href: "#" },

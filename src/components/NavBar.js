@@ -42,7 +42,8 @@ export default function ResponsiveAppBar() {
     setAnchorElNav(null);
     if (typeof page === "string") {
       // Only navigate if a page is clicked
-      const path = page === "Home" ? "/" : `/${page.toLowerCase()}`;
+      const path =
+        page === "Home" ? "/" : `/${page.replace(" ", "").toLowerCase()}`;
       navigate(path);
     }
   };
