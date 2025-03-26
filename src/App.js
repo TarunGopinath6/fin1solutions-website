@@ -18,11 +18,11 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/motorinsurance" element={<MotorInsurance />} />
+        {/* <Route path="/motorinsurance" element={<MotorInsurance />} />
         <Route path="/healthinsurance" element={<HealthInsurance />} />
         <Route path="/generalinsurance" element={<GeneralInsurance />} />
         <Route path="/vehicleloans" element={<VehicleLoans />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<About />} /> */}
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />

@@ -16,11 +16,11 @@ import Logo from "../assets/images/logo_fin1solutions.png";
 
 const pages = [
   "Home",
-  "Motor Insurance",
-  "Health Insurance",
-  "General Insurance",
-  "Vehicle Loans",
-  "About",
+  // "Motor Insurance",
+  // "Health Insurance",
+  // "General Insurance",
+  // "Vehicle Loans",
+  // "About",
   "Contact",
 ];
 
