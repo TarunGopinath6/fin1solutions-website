@@ -881,9 +881,9 @@ export default function Home() {
               // logo_futuregenerali,
               // logo_iffcotokio,
               logo_hdfcergo,
-              logo_royalsundaram,
+              // logo_royalsundaram,
               logo_starhealth,
-              logo_cholams,
+              // logo_cholams,
             ].map((logo, index) => (
               <Grid2 item xs={6} sm={4} md={2} key={index}>
                 <motion.div

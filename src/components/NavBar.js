@@ -94,6 +94,26 @@ export default function ResponsiveAppBar() {
                   </Typography>
                 </Button>
               ))}
+              <Button sx={{ my: 1, mx: 1, color: "#3b3b3b", display: "block" }}>
+                <Typography
+                  textAlign="center"
+                  fontSize={14}
+                  fontWeight={"bold"}
+                  color="red"
+                >
+                  HDFC ERGO AGENT CODE: HCG210740066777
+                </Typography>
+              </Button>
+              <Button sx={{ my: 1, mx: 1, color: "#3b3b3b", display: "block" }}>
+                <Typography
+                  textAlign="center"
+                  fontSize={14}
+                  fontWeight={"bold"}
+                  color="red"
+                >
+                  STAR HEALTH AGENT CODE: BA0000142617
+                </Typography>
+              </Button>
               <Button
                 variant="contained"
                 sx={{
